@@ -1,13 +1,15 @@
-import { Cliente } from './Cliente.js';
+import { Cliente } from '../Cliente.js';
 
+//Classe abstrata
 export class Conta {
     constructor(saldoInicial, cliente, agencia) {
+        if (this.constructor == Conta)
+            throw new Error("A classe conta é abstrata. Você não deveria instanciá-la diretamente!");
+
         this._saldo = saldoInicial;
         this._cliente = cliente;
         this._agencia = agencia;
 
-        if (this.constructor == Conta)
-            console.log("A classe conta é abstrata. Você não deveria instanciá-la diretamente!");
     }
 
     set cliente(novoValor){
@@ -24,10 +26,9 @@ export class Conta {
         return this._saldo;
     }
 
+    //Método abstrato
     sacar(valor){
-        let taxa = 1;
-        
-        return this._sacar(valor, taxa);
+        throw new Error("O método Conta.sacar(valor) é um método abstrato e deve ser implementado nas classes filhas!");
     }
 
     _sacar(valor, taxa){

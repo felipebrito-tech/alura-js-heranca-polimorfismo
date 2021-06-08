@@ -8,6 +8,7 @@ export class ContaCorrente extends Conta{
         ContaCorrente.numeroDeContas += 1;
     }
 
+    //Sobrescrevendo
     sacar(valor){
         let taxa = 1.1;
         return this._sacar(valor, taxa);
